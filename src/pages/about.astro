@@ -1,9 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+const pageTitle = "About me";
+const identity = {
+  firstName: "Peter",
+  location: "San Diego",
+  occupation: "UI Front-end Developer",
+  hobbies: ["photography", "gardening", "reading", "cooking"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Lit", "Astro", "React"];
+const happy = true;
+const finished = false;
+const goal = 2;
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={pageTitle}>
   <main>
     <svg
       class="astro-a"
@@ -33,13 +45,31 @@ import Card from "../components/Card.astro";
         </linearGradient>
       </defs>
     </svg>
-    <h1><span class="text-gradient">About me</span></h1>
-    <p class="">This is the text for the About page.</p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse id et, omnis
-      officia dolores aliquam earum, dignissimos beatae quos minus, quod
-      laboriosam quia assumenda cum ex ea in ad molestiae.
-    </p>
+    <h1><span class="text-gradient">{pageTitle}</span></h1>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>
+        I live in {identity.location} and I work as a {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identity.hobbies[0]} and{" "}
+            {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {goal === 3 ? (<p>My goal is to finish in 3 days.</p>) 
+      : (<p>My goal is not 3 days.</p>)
+    }
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <Card title={skill} />)}
+    </ul>
     <!-- <ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
