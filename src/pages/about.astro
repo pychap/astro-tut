@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
 const pageTitle = "About me";
 const identity = {
@@ -13,9 +13,12 @@ const skills = ["HTML", "CSS", "JavaScript", "Lit", "Astro", "React"];
 const happy = true;
 const finished = false;
 const goal = 2;
+const skillColor = "lightblue";
+const fontWeight = "200";
+const textCase = "uppercase";
 ---
 
-<Layout title={pageTitle}>
+<BaseLayout title={pageTitle}>
   <main>
     <svg
       class="astro-a"
@@ -48,7 +51,7 @@ const goal = 2;
     <h1><span class="text-gradient">{pageTitle}</span></h1>
     <p>Here are a few facts about me:</p>
     <ul>
-      <li>My name is {identity.firstName}.</li>
+      <li class="skill">My name is {identity.firstName}.</li>
       <li>
         I live in {identity.location} and I work as a {identity.occupation}.
       </li>
@@ -67,7 +70,7 @@ const goal = 2;
       : (<p>My goal is not 3 days.</p>)
     }
     <p>My skills are:</p>
-    <ul>
+    <ul class="link-card-grid">
       {skills.map((skill) => <Card title={skill} />)}
     </ul>
     <!-- <ul role="list" class="link-card-grid">
@@ -93,9 +96,9 @@ const goal = 2;
 			/>
 		</ul> -->
   </main>
-</Layout>
+</BaseLayout>
 
-<style>
+<style define:vars={{skillColor, fontWeight, textCase}}>
   main {
     margin: auto;
     padding: 1rem;
@@ -104,6 +107,12 @@ const goal = 2;
     color: white;
     font-size: 20px;
     line-height: 1.6;
+  }
+
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
   }
   .astro-a {
     position: absolute;
