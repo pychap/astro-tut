@@ -1,4 +1,5 @@
 document.querySelector('.hamburger').addEventListener('click', () => {
-  console.log('clicked');
+  const headerChange = document.querySelector("#pycHeader");
   document.querySelector('.nav-links').classList.toggle('expanded');
+  headerChange.classList.toggle('is-open');
 });
