@@ -82,17 +82,16 @@ header {
   align-self: self-start;
   display: flex;
   align-items: center;
-
-  & #themeToggle {
-    position: absolute;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    width: var(--size-8);
-    margin-top: var(--size-8);
-    margin-right: var(--size-2);
-    cursor: pointer;
-  }
+}
+header #themeToggle {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  width: var(--size-8);
+  margin-top: var(--size-8);
+  margin-right: var(--size-2);
+  cursor: pointer;
 }
 
 .is-open {
